@@ -19,7 +19,7 @@ export class AuthService {
     return this.httClient.post<JwtResponse>(`${this.SERVIDOR}/register`,usuario).pipe(tap((res:JwtResponse)=>{
       if(res){
           //guardan token
-          this.guardarToken(res.token,"")
+          this.guardarToken(res.token,"",res.rol)
       }
 
       })
@@ -32,7 +32,7 @@ export class AuthService {
       if(res){
           //guardan token
           console.log(res.token);
-          this.guardarToken(res.token,"")
+          this.guardarToken(res.token,"",res.rol)
       }
 
       })
@@ -45,12 +45,14 @@ export class AuthService {
     this.token='';
     localStorage.removeItem("ACCESS_TOKEN");
     localStorage.removeItem("EXPIRES_IN");
+    localStorage.removeItem("ROL");
   }
 
-  private guardarToken(token:string,expiresIn:string):void{
+  private guardarToken(token:string,expiresIn:string,rol:string):void{
 
     localStorage.setItem("ACCESS_TOKEN",token);
     localStorage.setItem("EXPIRES_IN",expiresIn);
+    localStorage.setItem("ROL",rol);
     this.token=token;
 
 

@@ -7,10 +7,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AuthService } from '../services/auth.service';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { AdminComponent } from './admin/admin.component';
+import { UserComponent } from './user/user.component';
 NgxPermissionsModule.forRoot()
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent],
+  declarations: [RegisterComponent, LoginComponent, AdminComponent, UserComponent],
   imports: [
     CommonModule,
     FormsModule,
